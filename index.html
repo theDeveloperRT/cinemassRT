@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/rsz_rt_logo.png" type="image/x-icon">
+    <title>RT cineMASS</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        width: 100vw;
+        min-height: 100vh;
+        max-height: fit-content;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #010617;
+        color: white;
+    }
+
+    h1 {
+        width: 100%;
+        text-align: center;
+        background-color: black;
+        height: 150px;
+        align-content: center;
+        font-size: 100px;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    h1 span {
+        color: red;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 150px;
+    }
+
+    .movieItem {
+        height: 700px;
+        width: 600px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+        margin-top: 100px;
+    }
+
+    .movieItem:hover {
+        animation: scale 0.4s none;
+    }
+
+    .movieItem .image {
+        height: 550px;
+        width: 100%;
+    }
+
+    .movieItem .image img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .movieItem .text {
+        height: 150px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .movieItem .text h3 {
+        font-size: 50px;
+    }
+
+    .movieItem .text p {
+        font-size: 40px;
+    }
+
+    footer {
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 50px;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 10px 0px;
+        letter-spacing: 1px;
+    }
+
+    footer p {
+        margin-left: 10px;
+    }
+
+    @keyframes scale {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @media (max-width: 2000px) {
+        h1 {
+            height: 100px;
+            font-size: 50px;
+        }
+
+        .container {
+            margin-top: 150px;
+            gap: 50px;
+            justify-content: center;
+        }
+
+        .movieItem {
+            height: 400px;
+            width: 350px;
+            margin-top: 0px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+
+        .movieItem .image {
+            height: 325px;
+        }
+
+        .movieItem .text {
+            height: 75px;
+        }
+
+        .movieItem .text h3 {
+            font-size: 24px;
+        }
+
+        .movieItem .text p {
+            font-size: 20px;
+        }
+
+        footer {
+            font-size: 18px;
+        }
+
+        footer p {
+            margin-left: 30px;
+        }
+
+    }
+</style>
+
+<body>
+    <h1>RT <span>Cine</span>MASS</h1>
+    <div class="container">
+        <!-- <div class="movieItem" onclick="openLink(this)">
+            <div class="image">
+                <img src="images/Dhamaka.jpeg" alt="movieIcon">
+            </div>
+            <div class="text">
+                <h3>DHAMAKA</h3>
+                <p>2022</p>
+            </div>
+        </div> -->
+    </div>
+
+
+    <footer>
+        <p>Designed by <strong>theDeveloperRT</strong></p>
+    </footer>
+
+    <script>
+        let container = document.querySelector(".container");
+        let moviesData = [
+            ["DHAMAKA", "2024", "https://drive.google.com/file/d/15JnMkN8gOOILgndbAbFpWBSV4oV4zlZ7/view?usp=sharing", "images/Dhamaka.jpeg"],
+            ["KALKI 2898AD", "2024", "https://drive.google.com/file/d/1kW-fZ99fjS6LDgPkYOgRAzOzibw6PmIT/view?usp=sharing", "images/kalki.jpeg"],
+            ["HANUMAN", "2024", "https://drive.google.com/file/d/12Qjm-E3noYDkyKqm6hvrdW_xytEJDY4m/view?usp=sharing", "images/hanuman.jpeg"],
+            ["DONGALAMUTA", "2011", "https://drive.google.com/file/d/16jJFe5f5LAUGxAC4GGhoALcXUwctoh_0/view", "images/dongalamuta.jpg"],
+            ["POWER UNLIMITED", "2015", "https://drive.google.com/file/d/1YnkFwKPcoa44ZfLwqYnnoJ1dekhHEYu4/view", "images/Power.jpg"],
+            ["JANNAT NO 1", "1992", "https://drive.google.com/file/d/1kPyPdqS_3_IzWlldZ52haQZ-b_gZWuTy/view?usp=sharing", "images/JN1.jpg"],
+            ["GOL GOLMAAL", "1997", "https://drive.google.com/file/d/1R0mAXn1tEn_1BnmtRf0CHiSAuV3qZvlH/view?usp=sharing", "images/GGML.jpg"],
+            ["STEEL TROOPS", "1986", "https://drive.google.com/file/d/1E29b09fP-2BLj7yWQRhqRoO43Ej3ptuH/view?usp=sharing", "images/STR.png"],
+            ["DORABIAN NIGHTS", "1991", "https://drive.google.com/file/d/1incYDGycUcdcgErL-pZwwPhRUWjk4GOs/view?usp=sharing", "images/DBN.jpg"],
+            ["DORABIAN_NIGHTS", "1991", "https://drive.google.com/file/d/1Gz31h385DahPAWwzPKAnt2sBo_wT_4HK/view?usp=sharing", "images/DBN.jpg"],
+            ["LITTLE SPACE WAR", "1985", "https://drive.google.com/file/d/1-MZzPLnxEj7H7F7gpKj2VwmxYBb82Krh/view?usp=sharing", "images/DBN.jpg"],
+            ["NOBITA DINOSAUR", "1980", "https://drive.google.com/file/d/1YUt3RhM3GicWVIWgcZ6ZzvB9_X-Ev05g/view?usp=sharing", "images/DNSR.jpg"]
+        ]
+
+        moviesData.sort(function (a, b) {
+            return b[1] - a[1]; // Compare the year values
+        });
+
+        moviesData.forEach(movie => {
+            let movieItem = document.createElement("div");
+
+            let image = document.createElement("div");
+            let img = document.createElement("img");
+
+            let text = document.createElement("div");
+            let movieName = document.createElement("h3");
+            let year = document.createElement("p");
+
+            movieItem.classList.add('movieItem');
+            image.classList.add('image');
+            text.classList.add('text');
+
+            movieItem.setAttribute('onclick', 'getMovieData(this)');
+            movieItem.setAttribute('id', movie[0]);
+            img.setAttribute('src', movie[3]);
+            img.setAttribute('alt', 'Poster');
+
+            movieName.textContent = movie[0];
+            year.textContent = movie[1];
+
+            image.appendChild(img);
+            text.appendChild(movieName);
+            text.appendChild(year);
+
+            movieItem.appendChild(image);
+            movieItem.appendChild(text);
+
+            container.appendChild(movieItem);
+        });
+
+        function getMovieData(movieName) {
+            let a = document.createElement("a");
+            moviesData.forEach(movie => {
+                if (movie[0] == movieName.id) {
+                    a.href = movie[2]
+                }
+            });
+            a.click();
+        }
+
+    </script>
+</body>
+
+</html>
